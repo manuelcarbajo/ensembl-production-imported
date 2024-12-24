@@ -70,6 +70,10 @@ class PredictedInteractor(Base):
         except NameError:
             return "<PredictedInteractor(predicted_interactor_id=Null-until-stored, curated_interactor_id='%d', interactor_type='%s', prediction_method_id='%d', curies='%s', name='%s', molecular_structure='%s', predicted_timestamp='%s', ensembl_gene_id='%d')>" % (
                 self.curated_interactor_id, self.interactor_type, self.prediction_method_id, self.curies, self.name, self.molecular_structure, str(self.predicted_timestamp),self.ensembl_gene_id)
+        except TypeError:
+            return "<PredictedInteractor(predicted_interactor_id=Null-until-stored, curated_interactor_id='%d', interactor_type='%s', prediction_method_id='%d', curies='%s', name='%s', molecular_structure='%s', predicted_timestamp='%s', ensembl_gene_id='%d')>" % (
+                self.curated_interactor_id, self.interactor_type, self.prediction_method_id, self.curies, self.name, self.molecular_structure, str(self.predicted_timestamp),self.ensembl_gene_id)
+        
 
 class CuratedInteractor(Base):
     __tablename__ = 'curated_interactor'
@@ -95,6 +99,10 @@ class CuratedInteractor(Base):
         except NameError:
             return "<CuratedInteractor(curated_interactor_id=Null-until-stored, interactor_type='%s', curies='%s', name='%s', molecular_structure='%s', import_timestamp='%s', ensembl_gene_id='%d')>" % (
                 self.interactor_type, self.curies, self.name, self.molecular_structure, str(self.import_timestamp),self.ensembl_gene_id)
+        except TypeError:
+            return "<CuratedInteractor(curated_interactor_id=Null-until-stored, interactor_type='%s', curies='%s', name='%s', molecular_structure='%s', import_timestamp='%s', ensembl_gene_id='%d')>" % (
+                self.interactor_type, self.curies, self.name, self.molecular_structure, str(self.import_timestamp),self.ensembl_gene_id)
+        
 
 class EnsemblGene(Base):
     __tablename__ = 'ensembl_gene'
@@ -114,6 +122,9 @@ class EnsemblGene(Base):
             return "<EnsemblGene(gene_id='%d', ensembl_stable_id='%s', species_id='%d', import_timestamp='%s')>" % (
                 eg_id, self.ensembl_stable_id, self.species_id, str(self.import_timestamp))
         except NameError:
+            return "<EnsemblGene(gene_id=Null-until-stored, ensembl_stable_id='%s', species_id='%d', import_timestamp='%s')>" % (
+                self.ensembl_stable_id, self.species_id, str(self.import_timestamp))
+        except TypeError:
             return "<EnsemblGene(gene_id=Null-until-stored, ensembl_stable_id='%s', species_id='%d', import_timestamp='%s')>" % (
                 self.ensembl_stable_id, self.species_id, str(self.import_timestamp))
 
@@ -141,6 +152,10 @@ class Interaction(Base):
         except NameError:
             return "<Interaction(interaction_id=Null-until-stored, interactor_1='%s', interactor_2='%s', doi='%s', source_db_id='%d', import_timestamp='%s')>" % (
                 self.interaction_id, self.interactor_1, self. interactor_2, self.doi, self.source_db_id, str(self.import_timestamp))
+        except TypeError:
+            return "<Interaction(interaction_id=Null-until-stored, interactor_1='%s', interactor_2='%s', doi='%s', source_db_id='%d', import_timestamp='%s')>" % (
+                self.interaction_id, self.interactor_1, self. interactor_2, self.doi, self.source_db_id, str(self.import_timestamp))
+        
 
 class KeyValuePair(Base):
     __tablename__ = 'key_value_pair'
@@ -184,6 +199,9 @@ class MetaKey(Base):
         except NameError:
             return "<MetaKey(meta_key_id=Null-until-stored, name='%s', description='%s')>" % (
                 self.key_name, self.key_description)
+        except TypeError:
+            return "<MetaKey(meta_key_id=Null-until-stored, name='%s', description='%s')>" % (
+                self.key_name, self.key_description)
 
 
 class OntologyTerm(Base):
@@ -205,6 +223,9 @@ class OntologyTerm(Base):
         except NameError:
             return "<Key(ontology_term_id=Null-until-stored, ontology_id='%d', accession='%s', description='%s')>" % (
                 self.ontology_id, self.accession, self.description)
+        except TypeError:
+            return "<Key(ontology_term_id=Null-until-stored, ontology_id='%d', accession='%s', description='%s')>" % (
+                self.ontology_id, self.accession, self.description)
 
 
 class Ontology(Base):
@@ -224,6 +245,9 @@ class Ontology(Base):
         except NameError:
             return "<Ontology(ontology_id=Null-until-stored, name='%s', description='%s')>" % (
                 self.name, self.description)
+        except TypeError:
+            return "<Ontology(ontology_id=Null-until-stored, name='%s', description='%s')>" % (
+                self.name, self.description)
 
 class PredictionMethod(Base):
     __tablename__ = 'prediction_method'
@@ -240,6 +264,9 @@ class PredictionMethod(Base):
             return "<PredictionMethod(prediction_method_id='%d', prediction_method_name='%s', prediction_method_values='%s')>" % (
                 pm_id, self.prediction_method_name, self.prediction_method_values)
         except NameError:
+            return "<PredictionMethod(prediction_method_id=Null-until-stored, prediction_method_name='%s', prediction_method_values='%s')>" % (
+                self.prediction_method_name, self.prediction_method_values)
+        except TypeError:
             return "<PredictionMethod(prediction_method_id=Null-until-stored, prediction_method_name='%s', prediction_method_values='%s')>" % (
                 self.prediction_method_name, self.prediction_method_values)
             
@@ -265,6 +292,9 @@ class SourceDb(Base):
         except NameError:
             return "<SourceDb(source_db_id=Null-until-stored, label='%s', external_db='%s', original_curator_db='%s')>" % (
                 self.label, self.external_db, self.original_curator_db)
+        except TypeError:
+            return "<SourceDb(source_db_id=Null-until-stored, label='%s', external_db='%s', original_curator_db='%s')>" % (
+                self.label, self.external_db, self.original_curator_db)
 
 class Species(Base):
     __tablename__ = 'species'
@@ -285,3 +315,7 @@ class Species(Base):
         except NameError:
             return "<Species(species_id=Null-until-stored, ensembl_division='%s', production_name='%s', taxon_id='%d', scientific_name='%s')>" % (
                 self.ensembl_division, self.production_name, self.taxon_id, self.scientific_name)
+        except TypeError:
+            return "<Species(species_id=Null-until-stored, ensembl_division='%s', production_name='%s', taxon_id='%d', scientific_name='%s')>" % (
+                self.ensembl_division, self.production_name, self.taxon_id, self.scientific_name)
+
